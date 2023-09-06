@@ -2,6 +2,5 @@
 @section('title', 'Home')
 
 @section('content')
-    <livewire:counter />
-    <livewire:contact />
+    
 @endsection
