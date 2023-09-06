@@ -24,20 +24,34 @@
 </head>
 <header>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="/">Home</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
+            @auth
+            <li class="nav-item">
+              <a class="nav-link" href="/list-links/{{auth()->user()->id}}">Dados</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/add-links">Adcionar Links</a>
+            </li>
+            <li class="nav-item">
+              <form action="/logout" method="post">
+              @csrf
+              <a class="nav-link" href="/logout" onclick="event.preventDefault();
+              this.closest('form').submit();">Sair</a>
+            </form>
+            </li>
+            @endauth
+            @guest
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="/login">Login</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/register">Registro</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
+            @endguest
             </li>
           </ul>
         </div>
@@ -49,7 +63,7 @@
     {{--Página (Este comentário não é lido pelo navegador)--}}
     @yield('content')
 
-    <div class="container">
+    <div class="footer">
             <footer class="py-3 my-4">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                     <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>

@@ -13,9 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Http\Controllers\LinkController;
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/list-links/{id}', [LinkController::class, 'index']);
+
+Route::get('/add-links', [LinkController::class, 'add_links']);
+
+Route::post('/numero', [LinkController::class, 'numero']);
 
 Route::middleware([
     'auth:sanctum',

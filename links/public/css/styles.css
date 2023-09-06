@@ -7,9 +7,28 @@ nav{
     height: 80px;
     background-color: rgb(208, 239, 247);
 }
-.container{
+.footer{
     position: fixed;
     top: 90%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+h1{
+    margin-top: 10px;
+}
+.user-datas{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+p{
+    margin-left: 30px;
+}
+.container{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+form{
+    margin-top: -60px;
 }
