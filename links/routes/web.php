@@ -23,7 +23,15 @@ Route::get('/list-links/{id}', [LinkController::class, 'index']);
 
 Route::get('/add-links', [LinkController::class, 'add_links']);
 
+Route::get('/edit/{id}', [LinkController::class, 'edit'])->middleware('auth');
+
+Route::get('/edit-user/{id}', [LinkController::class, 'user_edit'])->middleware('auth');
+
+Route::get('/delete/{id}', [LinkController::class, 'delete'])->middleware('auth');
+
 Route::post('/numero', [LinkController::class, 'numero']);
+
+Route::post('/links', [LinkController::class, 'store']);
 
 Route::middleware([
     'auth:sanctum',

@@ -12,7 +12,7 @@
 <p>Nome: {{auth()->user()->name}}</p><br>
 <p>Login: {{auth()->user()->email}}</p>
 </div>
-<button>Editar</button>
+<a href="/edit-user/{{auth()->user()->id}}"><button>Editar</button></a>
 </center>
     <div class="container">
         <table id="myTable" class="display">
@@ -31,8 +31,8 @@
                         <td>{{ $data->label }}</td>
                         <td>{{ $data->link }}</td>
                         <td>
-                            <button>Alterar</button>
-                            <button>Deletar</button>
+                            <a href="/edit/{{ $data->id }}"><button>Alterar</button></a>
+                            <a href="/delete/{{ $data->id }}"><button>Deletar</button></a>
                         </td>
                     </tr>
                 @endforeach

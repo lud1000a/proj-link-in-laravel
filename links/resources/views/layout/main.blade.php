@@ -36,8 +36,7 @@
             <li class="nav-item">
               <form action="/logout" method="post">
               @csrf
-              <a class="nav-link" href="/logout" onclick="event.preventDefault();
-              this.closest('form').submit();">Sair</a>
+            <a class="nav-link" href="/logout" onclick="event.preventDefault(); this.closest('form').submit();">Sair</a>
             </form>
             </li>
             @endauth
@@ -52,7 +51,6 @@
               <a class="nav-link" href="/register">Registro</a>
             </li>
             @endguest
-            </li>
           </ul>
         </div>
       </nav>
@@ -61,7 +59,16 @@
 <body>
 
     {{--Página (Este comentário não é lido pelo navegador)--}}
-    @yield('content')
+    <main>
+      <div class="container-fluid">
+        <div class="row">
+          @if(session('msg'))
+            <p class="msg">{{session('msg')}}</p>
+          @endif
+          @yield('content')
+        </div>
+      </div>
+    </main>
 
     <div class="footer">
             <footer class="py-3 my-4">
