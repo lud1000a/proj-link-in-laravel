@@ -2,26 +2,27 @@
 @section('title', 'Home')
 
 @section('content')
-{{--
-<p>{{$label}}</p>
-<p>{{$link}}</p>
-<p>{{$linkid}}</p>
---}}
-<center>
-    <h1>Editar</h1>
-</center>
+    <center>
+        <br>
+        <h1>Editar</h1>
+        <hr>
+    </center>
     <div class="container">
-        <form>
+        <form method="POST" action="/update">
+            @csrf
+            @method('PUT')
+            <input type="hidden" name="id" value="{{ $event->id }}">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Label</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" required>
+                <input name="label" type="text" class="form-control" id="exampleFormControlInput1" value="{{ $event->label }}" required>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Link</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" required>
+                <input name="link" type="text" class="form-control" id="exampleFormControlInput1" value="{{ $event->link }}"
+                    required>
             </div>
             <br>
-               <center> <button class='btn btn-primary'>Enviar</button></center>
+            <center> <button type="submit" class='btn btn-primary'>Enviar</button></center>
         </form>
     </div>
 @endsection

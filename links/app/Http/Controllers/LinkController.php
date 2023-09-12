@@ -24,17 +24,20 @@ class LinkController extends Controller
     }
     public function edit($id)
     {
-
+        $event = Link::findOrFail($id);
+        return view('edit-link', ['event' => $event]);
     }
-    public function user_edit($id)
+    public function update(Request $request)
     {
-       
+        Link::findOrFail($request->id)->update([
+            'label' => $request->label,
+            'link' => $request->link,
+        ]);
+        return redirect('/')->with('msg', 'Editado com sucesso');
     }
     public function delete($id)
     {
-
         Link::findOrFail($id)->delete();
-
         return redirect('/')->with('msg', 'Link Excluido');
     }
     public function store(Request $request)

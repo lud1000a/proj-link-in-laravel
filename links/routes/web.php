@@ -19,17 +19,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/list-links/{id}', [LinkController::class, 'index']);
+Route::get('/list-links/{id}', [LinkController::class, 'index'])->middleware('auth');
 
 Route::get('/add-links', [LinkController::class, 'add_links']);
 
-Route::get('/edit/{id}', [LinkController::class, 'edit'])->middleware('auth');
-
-Route::get('/edit-user/{id}', [LinkController::class, 'user_edit'])->middleware('auth');
+Route::get('/edit-link/{id}', [LinkController::class, 'edit'])->middleware('auth');
 
 Route::get('/delete/{id}', [LinkController::class, 'delete'])->middleware('auth');
 
 Route::post('/numero', [LinkController::class, 'numero']);
+
+Route::put('/update', [LinkController::class, 'update']);
 
 Route::post('/links', [LinkController::class, 'store']);
 
