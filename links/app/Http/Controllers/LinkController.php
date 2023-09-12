@@ -50,6 +50,7 @@ class LinkController extends Controller
             $event->link = $link['link'];
             $event->save();
         }
-        return $this->index($request->id);
+        //return redirect('/')->with('msg', 'Adicionado com sucesoss');
+        return $this->index($request->id)->with('msg', 'Adicionado com sucesso');
     }
 }
