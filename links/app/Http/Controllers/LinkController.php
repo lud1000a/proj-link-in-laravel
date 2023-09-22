@@ -53,4 +53,9 @@ class LinkController extends Controller
         //return redirect('/')->with('msg', 'Adicionado com sucesoss');
         return $this->index($request->id)->with('msg', 'Adicionado com sucesso');
     }
+
+    public function todos(){
+
+        return Link::all('label', 'id', 'link')->toJson();     
+    }
 }
